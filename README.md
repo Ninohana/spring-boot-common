@@ -67,26 +67,26 @@
 @Data
 @ToString
 @EqualsAndHashCode
-public class Response<T> {
+public class R<T> {
     private Integer code;
     private String msg;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
-    public static <T> Response<T> ok(T data) {
-        Response<T> response = new Response<>();
-        response.setCode(200);
-        response.setMsg("ok");
-        response.setData(data);
-        return response;
+    public static <T> R<T> ok(T data) {
+        R<T> r = new R<>();
+        r.setCode(200);
+        r.setMsg("ok");
+        r.setData(data);
+        return r;
     }
 
-    public static <T> Response<T> fail(T data) {
-        Response<T> response = new Response<>();
-        response.setCode(500);
-        response.setMsg("fail");
-        response.setData(data);
-        return response;
+    public static <T> R<T> fail(T data) {
+        R<T> r = new R<>();
+        r.setCode(500);
+        r.setMsg("fail");
+        r.setData(data);
+        return r;
     }
 }
 ```
@@ -96,7 +96,7 @@ public class Response<T> {
 metauchuu:
   wrapper:
     enable: true # 是否开启，默认不开启（false）
-    response-template: com.metauchuu.model.Response # 修改成上面模板的全限定名，默认为空
+    response-template: com.metauchuu.common.model.R # 修改成包装对象的全限定名，和上面模板字段必须一致，可增加新字段
     default-code: 200 # 接口返回代码
     default-msg: success # 接口返回信息
 ```
