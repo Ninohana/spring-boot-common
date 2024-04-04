@@ -1,14 +1,16 @@
 package com.metauchuu.common.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@AllArgsConstructor
-public class BaseCustomException extends Exception{
-    private Integer code;
+public class BaseCustomException extends Exception {
+    protected Integer code;
 
-    private String msg;
+    public BaseCustomException(Integer code, String message) {
+        super(message);
+
+        this.code = code;
+    }
 }

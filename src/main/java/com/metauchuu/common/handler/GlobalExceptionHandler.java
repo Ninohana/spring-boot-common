@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
     public R<?> baseCustomException(BaseCustomException e) {
         var fail = R.fail(null);
         fail.setCode(e.getCode());
-        fail.setMsg(e.getMsg());
+        fail.setMsg(e.getMessage());
         return fail;
     }
 
