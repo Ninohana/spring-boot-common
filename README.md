@@ -19,13 +19,13 @@
 @ResponseBody的增强版，能自动包裹一层指定的对象，用于统一json格式的返回值。
 
 ```java
-// 省略部分代码
+// ...省略部分代码
     @GetMapping("/category")
     @ResponseBodyWrapping
     public List<Category> category() {
         return categoryService.listCategory();
     }
-// 省略部分代码
+// ...省略部分代码
 ```
 
 接口返回（原本只有一个List，即data中的数据）：
@@ -104,31 +104,25 @@ metauchuu:
 全局异常处理。接口发生异常并且未捕获时，自动返回异常信息。
 
 ```java
-...
+// ...
     @GetMapping("/hello")
     @ResponseBodyWrapping
     public String hello() {
         System.out.println(1 / 0);
         return "Hi";
     }
-...
+// ...
 ```
 
-请求返回
+请求返回：
 
 ```json
 {
     "code": 500,
-    "msg": "fail",
-    "data": "/ by zero"
+    "msg": "/ by zero"
 }
 ```
 
 用法：
 
-```yaml
-# application.yml
-metauchuu:
-  handler:
-    global-exception: true
-```
+启动类上添加`@EnableExceptionHandle`

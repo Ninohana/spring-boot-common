@@ -1,5 +1,6 @@
 package com.metauchuu.common.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -10,7 +11,7 @@ import lombok.ToString;
 public class R<T> {
     private Integer code;
     private String msg;
-    // @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
     public static <T> R<T> ok(T data) {
