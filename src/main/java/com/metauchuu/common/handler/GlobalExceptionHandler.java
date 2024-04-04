@@ -16,7 +16,10 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public R<?> exception(Exception e) {
-        return R.fail(e.getMessage());
+        var fail = R.fail(null);
+        fail.setCode(500);
+        fail.setMsg(e.getMessage());
+        return fail;
     }
 
     @ResponseBody
