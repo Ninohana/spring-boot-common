@@ -1,1 +1,2 @@
 com.metauchuu.common.wrapper.WrappingResponseBodyAdvice
+com.metauchuu.common.handler.GlobalExceptionHandler

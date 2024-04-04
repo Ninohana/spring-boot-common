@@ -18,8 +18,6 @@
 
 @ResponseBody的增强版，能自动包裹一层指定的对象，用于统一json格式的返回值。
 
-例如：
-
 ```java
 // 省略部分代码
     @GetMapping("/category")
@@ -99,4 +97,38 @@ metauchuu:
     response-template: com.metauchuu.common.model.R # 修改成包装对象的全限定名，和上面模板字段必须一致，可增加新字段
     default-code: 200 # 接口返回代码
     default-msg: success # 接口返回信息
+```
+
+- GlobalExceptionHandler
+
+全局异常处理。接口发生异常并且未捕获时，自动返回异常信息。
+
+```java
+...
+    @GetMapping("/hello")
+    @ResponseBodyWrapping
+    public String hello() {
+        System.out.println(1 / 0);
+        return "Hi";
+    }
+...
+```
+
+请求返回
+
+```json
+{
+    "code": 500,
+    "msg": "fail",
+    "data": "/ by zero"
+}
+```
+
+用法：
+
+```yaml
+# application.yml
+metauchuu:
+  handler:
+    global-exception: true
 ```
